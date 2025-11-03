@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-    DOCKERHUB_REGISTRY = 'joanroucoux/node-web-app'
+    DOCKERHUB_REGISTRY = 'vineethakondepudi/node-web-app'
     DOCKERHUB_CREDENTIALS_ID = 'dockerhub'
   }
 
@@ -35,8 +35,8 @@ pipeline {
       steps {
         withCredentials([usernamePassword(
           credentialsId: DOCKERHUB_CREDENTIALS_ID,
-          passwordVariable: 'DOCKERHUB_PASSWORD',
-          usernameVariable: 'DOCKERHUB_USERNAME'
+          passwordVariable: 'Vineetha@123',
+          usernameVariable: 'vineethakondepudi'
         )]) {
           sh 'docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}'
           sh 'docker push ${DOCKERHUB_REGISTRY}:${BUILD_NUMBER}'
