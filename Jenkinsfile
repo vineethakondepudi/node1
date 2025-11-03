@@ -29,14 +29,15 @@ pipeline {
 
     stage('Push Docker image') {
       steps {
-        withCredentials([usernamePassword(
-          credentialsId: DOCKERHUB_CREDENTIALS_ID,
-          passwordVariable: 'Vineetha@123',
-          usernameVariable: 'vineethakondepudi'
-        )]) {
-          sh 'docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}'
-          sh 'docker push ${DOCKERHUB_REGISTRY}:${BUILD_NUMBER}'
-        }
+       withCredentials([usernamePassword(
+  credentialsId: DOCKERHUB_CREDENTIALS_ID,
+  usernameVariable: 'DOCKERHUB_USERNAME',
+  passwordVariable: 'DOCKERHUB_PASSWORD'
+)]) {
+  sh 'docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}'
+  sh 'docker push ${DOCKERHUB_REGISTRY}:${BUILD_NUMBER}'
+}
+
       }
     }
   }
