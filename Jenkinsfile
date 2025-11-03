@@ -1,10 +1,6 @@
 pipeline {
   agent any
 
-  tools {
-    nodejs 'node'
-  }
-
   environment {
     DOCKERHUB_REGISTRY = 'vineethakondepudi/node-web-app'
     DOCKERHUB_CREDENTIALS_ID = 'dockerhub'
